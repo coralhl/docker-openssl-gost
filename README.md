@@ -52,6 +52,10 @@ To show certificate of host with GOST
 ```
 openssl s_client -connect gost.example.com:443 -showcerts
 ```
+or
+```
+docker run -it --rm openssl-gost-local bash -c "openssl s_client -connect gosuslugi.ru:443 -showcerts"
+```
 
 To send a file to host with POST and save the response into new file
 ```
