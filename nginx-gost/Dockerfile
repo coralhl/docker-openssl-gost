@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 
 ARG NGINX_VERSION=1.22.0
 ARG NGINX_SHA256=b33d569a6f11a01433a57ce17e83935e953ad4dc77cdd4d40f896c88ac26eb53
-ARG OPENSSL_VERSION=1_1_1q
+ARG OPENSSL_VERSION=OpenSSL_1_1_1q
 ARG OPENSSL_SHA256=df86e6adcff1c91a85cef139dd061ea40b7e49005e8be16522cf4864bfcf5eb8
 
 RUN apt-get update \
@@ -106,12 +106,15 @@ RUN sed -i '6i openssl_conf=openssl_def' "${OPENSSL_CONF}" \
   && echo "dynamic_path = ${OPENSSL_DIR}/lib/engines-1.1/gost.so" >> "${OPENSSL_CONF}f" \
   && echo "default_algorithms = ALL" >> "${OPENSSL_CONF}" \
   && echo "CRYPT_PARAMS = id-Gost28147-89-CryptoPro-A-ParamSet" >> "${OPENSSL_CONF}"
+  # clean up
+  && unset OPENSSL_CONF \
+  && rm -rf /var/lib/apt/lists/*
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-EXPOSE 80
+EXPOSE 80 443
 
 STOPSIGNAL SIGTERM
 
