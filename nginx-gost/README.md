@@ -1,6 +1,10 @@
 # Dockerfile for nginx with GOST TLS support
 
 Contains nginx, openssl and gost-engine.
+Run to build it:
+```
+docker build -t nginx-gost .
+```
 
 ## Nginx with default configuration:
 
