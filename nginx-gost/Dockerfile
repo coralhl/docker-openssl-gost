@@ -1,9 +1,9 @@
 FROM debian:stretch-slim
 
-ARG NGINX_VERSION=1.17.6
-ARG NGINX_SHA256=3cb4a5314dc0ab0a4e8a7b51ae17c027133417a45cc6c5a96e3dd80141c237b6
-ARG OPENSSL_VERSION=OpenSSL_1_1_1d
-ARG OPENSSL_SHA256=a366e3b6d8269b5e563dabcdfe7366d15cb369517f05bfa66f6864c2a60e39e8
+ARG NGINX_VERSION=1.22.0
+ARG NGINX_SHA256=b33d569a6f11a01433a57ce17e83935e953ad4dc77cdd4d40f896c88ac26eb53
+ARG OPENSSL_VERSION=1_1_1q
+ARG OPENSSL_SHA256=df86e6adcff1c91a85cef139dd061ea40b7e49005e8be16522cf4864bfcf5eb8
 
 RUN apt-get update \
   && apt-get install wget build-essential libpcre++-dev libz-dev ca-certificates unzip cmake --no-install-recommends -y \
