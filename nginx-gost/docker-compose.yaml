@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   gost_nginx:
-    image: netskol/nginx-gosted:latest
+    image: nginx-gost
     restart: unless-stopped
     ports:
       - 80:80
