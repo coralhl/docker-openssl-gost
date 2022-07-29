@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  gost_nginx:
+    image: netskol/nginx-gosted:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    environment:
+      - TZ=Europe/Moscow
